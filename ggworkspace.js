@@ -2,25 +2,32 @@ const elInput = document.getElementById("avatar");
 const uploadBtn = document.getElementById("upload");
 const img = document.getElementById("image-preview");
 
+const postData =[];
+
+
+elInput.addEventListener("change", () => {
+    const file = elInput.files;
+    const fileList = Array.from(file);
+
+    fileList.forEach((file, index) => {
+        
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.addEventListener("load", () => {
+            const data = reader.result.split(",")[1];
+            postData[index] = {
+                name : file.name,
+                type : file.type,
+                data : data
+            };
+        });
+    });    
+    console.log("🚀 ~ reader.addEventListener ~ postData:", postData)
+});
 
 uploadBtn.addEventListener("click", () => {
-    const file = elInput.files[0];
-    if (!file) {
-        return elInput.click();
-    }
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.addEventListener("load", () => {
-        //console.log("🚀 ~ uploadBtn.addEventListener ~ reader:", reader)
-        const data = reader.result.split(",")[1];
-        const postdata = {
-            name : file.name,
-            type : file.type,
-            data : data
-        };
-        console.log("🚀 ~ reader.addEventListener ~ postdata:", postdata)
-        postFile(postdata);
-    });
+    console.log(postData);
+    postFile(postData);
 });
 
 async function postFile(postData){
@@ -34,7 +41,6 @@ async function postFile(postData){
             body: JSON.stringify(postData)
         });
         const data = await response.json();
-        img.src = data.link + "&sz=s500";
         console.log("🚀 ~ postFile ~ data", data);
         //return response.json();
     } catch (error) {
