@@ -80,9 +80,9 @@
         <label for="avatar" class="form-label">Ảnh đại diện</label>
         <div>
           <input type="file" name="avatar" id="avatar" class="form-control" multiple>
-          <button type="button" id="upload">
+          <!-- <button  type="button" id="upload">
             UPLOAD
-          </button>  
+          </button>   -->
         </div>
         <span class="form-message"></span>
         <img src="" alt="" id="image-preview" width="100">
@@ -143,13 +143,15 @@
 
         }
 
-        postData(dataNew);
+        postSubmit(dataNew);
+
+
 
 
       }
     });
 
-  async function postData(data) {
+  async function postSubmit(data) {
     const formData = new FormData();
     formData.append("entry.1877919028", data.fullname);
     formData.append("entry.362355039", data.email);

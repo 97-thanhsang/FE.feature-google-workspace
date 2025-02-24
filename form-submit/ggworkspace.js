@@ -1,5 +1,7 @@
 const elInput = document.getElementById("avatar");
-const uploadBtn = document.getElementById("upload");
+// const uploadBtn = document.getElementById("upload");
+const uploadSubmit = document.getElementById("form-submit");
+
 const img = document.getElementById("image-preview");
 
 const postData =[];
@@ -25,10 +27,14 @@ elInput.addEventListener("change", () => {
     console.log("🚀 ~ reader.addEventListener ~ postData:", postData)
 });
 
-uploadBtn.addEventListener("click", () => {
-    console.log(postData);
+uploadSubmit.addEventListener("click", (e) => {
     postFile(postData);
 });
+
+// uploadBtn.addEventListener("click", () => {
+//     console.log(postData);
+//     postFile(postData);
+// });
 
 async function postFile(postData){
     try {
