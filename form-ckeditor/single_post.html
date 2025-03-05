@@ -88,8 +88,9 @@
         ></textarea>
         <button id="comment_submit">Gửi</button>
       </div>
-      <div class="comment_wrapper"></div>
-    </div>
+      <div class="comment_wrapper">
+        
+      </div>      
   </body>
   <script src="./comments.js"></script>
   <script>
@@ -100,8 +101,8 @@
         `https://script.google.com/macros/s/AKfycbwmSGXwVL6m5_IVjDruxJb3NdxuqpglqLqWBPLwmJEV2vrfBcb36BxF9PH0OYMmrzVU/exec`
       );
       const data = await response.json();
-      content_post.innerHTML = data[1].content;
-      h1.innerHTML = data[1].title;
+      content_post.innerHTML = data[5].content;
+      h1.innerHTML = data[5].title;
     }
     fetchPost();
   </script>
