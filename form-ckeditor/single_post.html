@@ -93,17 +93,4 @@
       </div>      
   </body>
   <script type="module" src="./comments.js"></script>
-  <script>
-    const content_post = document.getElementById("content_post");
-    const h1 = document.querySelector("h1");
-    async function fetchPost() {
-      const response = await fetch(
-        `https://script.google.com/macros/s/AKfycbwmSGXwVL6m5_IVjDruxJb3NdxuqpglqLqWBPLwmJEV2vrfBcb36BxF9PH0OYMmrzVU/exec`
-      );
-      const data = await response.json();
-      content_post.innerHTML = data[5].content;
-      h1.innerHTML = data[5].title;
-    }
-    fetchPost();
-  </script>
 </html>
